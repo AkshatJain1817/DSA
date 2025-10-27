@@ -5,8 +5,10 @@ public:
         if(k==0) return num;
         int n = num.size();
         stack<char>st;
+
+        st.push(num[0]);
         
-        for(int i=0;i<n;i++){
+        for(int i=1;i<n;i++){
             while(k>0&&!st.empty()&&st.top()>num[i]){
                 k--;
                 st.pop();
