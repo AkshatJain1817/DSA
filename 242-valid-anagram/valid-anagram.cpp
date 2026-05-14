@@ -1,19 +1,18 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        int n=s.size();
-        int m=t.size();
-        if(n!=m) return false;
-        unordered_map<char,int> mpp1;
-        unordered_map<char,int> mpp2;
-        for(int i=0;i<n;i++){
-            mpp1[s[i]]++;
-            mpp2[t[i]]++;
+        if(s.size()!=t.size()) return false;
+        vector<int> count(26,0);
+        for(char i:s){
+            count[i-'a']++;
         }
-        if(mpp1==mpp2){
-            return true;
-        }else{
-            return false;
+        for(char j:t){
+            count[j-'a']--;
         }
+
+        for(int i=0;i<26;i++){
+            if(count[i]!=0) return false;
+        }
+        return true;
     }
 };
